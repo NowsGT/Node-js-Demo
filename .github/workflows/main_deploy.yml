@@ -30,7 +30,7 @@ jobs:
       #- run: npm --version
       
 
-      #- run: npm install
+      ##- run: npm install
       ##- run: node app.js
       
       - name:  'Automated Version Bump'
