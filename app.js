@@ -1,4 +1,4 @@
-console.log('Hello, Node js');
+console.log('Hello, Node js..');
 console.log('Testing from "main"');
 
 /** var moment = require('moment');
