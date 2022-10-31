@@ -24,7 +24,7 @@ jobs:
     steps:
     
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      #- uses: actions/checkout@v3
           
       #- run: node --version
       ##- run: npm --version
@@ -33,14 +33,22 @@ jobs:
       ##- run: npm install
       ##- run: node app.js
       
-      - name:  'Automated Version Bump'
-        uses:  'phips28/gh-action-bump-version@master'
+      - name: 'Checkout source code'
+        uses: 'actions/checkout@v3'
+        with:
+          ref: ${{ github.ref }}
+      - name: 'cat package.json'
+        run: cat ./package.json
+      - name: 'Automated Version Bump'
+        id: version-bump
+        uses: 'phips28/gh-action-bump-version@master'
+        with:
+          tag-prefix: 'v'
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        with:
-          target-branch: 'main'
-          #minor-wording:  'add,Adds,new'
-          #major-wording:  'MAJOR,cut-major'
-          #patch-wording:  'patch,fixes'     # Providing patch-wording will override commits
-                                      # defaulting to a patch bump.
-          #rc-wording:     'RELEASE,alpha'
+      - name: 'cat package.json'
+        run: cat ./package.json
+      - name: 'Output Step'
+        env:
+          NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
+        run: echo "new tag $NEW_TAG"
