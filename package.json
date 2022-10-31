@@ -1,5 +1,6 @@
 {
     "name": "simple",
-    "main": "app.js"
+    "main": "app.js",
+    "version": "0.0.1",
 
 }
