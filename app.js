@@ -7,7 +7,4 @@ console.log('package.json ignored..');
 console.log('dev-branch added..');
 console.log('set default..');
 console.log('grep version..');
-/** var moment = require('moment');
-var date = moment().format('LL');
-console.log(date);
-**/
+console.log('checking key words..');
