@@ -5,7 +5,7 @@ name: Main Deploy
 # Controls when the workflow will run
 on:
   release:
-    type: [ published ]
+    types: [ published ]
     
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
