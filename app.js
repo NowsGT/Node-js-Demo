@@ -7,4 +7,4 @@ console.log('package.json ignored..');
 console.log('dev-branch added..');
 console.log('set default..');
 console.log('grep version..');
-console.log('checking key words..');
+console.log('checking key words!!');
