@@ -4,6 +4,7 @@ console.log('Added wording...');
 console.log('Set to staging...');
 console.log('Removed env variables..');
 console.log('package.json ignored..');
+console.log('dev-branch added..');
 /** var moment = require('moment');
 var date = moment().format('LL');
 console.log(date);
