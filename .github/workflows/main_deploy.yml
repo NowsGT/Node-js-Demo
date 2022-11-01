@@ -38,21 +38,23 @@ jobs:
         uses: 'actions/checkout@v3'
         with:
           ref: ${{ github.ref }}
+          
       - name: 'cat package.json'
-        run: cat ./package.json
+        run: cat ./package.json | grep "version"
+
       - name: 'Automated Version Bump'
         id: version-bump
         uses: 'phips28/gh-action-bump-version@master'
         with:
           tag-prefix: 'v'
-          major-wording: 'major'
-          minor-wording: 'minor'
-          patch-wording: 'patch'
-          default: 'patch' 
+          major-wording: 'major-version'
+          minor-wording: 'minor-version'
+          patch-wording: 'patch-version'
+          default: 'patch-version' 
         #env:
           #GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: 'cat package.json'
-        run: cat ./package.json
+        run: cat ./package.json | grep "version"
       - name: 'Output Step'
         env:
           NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
