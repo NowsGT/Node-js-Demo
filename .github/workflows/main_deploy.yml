@@ -5,7 +5,7 @@ name: Main Deploy
 # Controls when the workflow will run
 on:
   release:
-    type: [published]
+    type: [ published ]
     branches: [ main ]
     paths-ignore:
       - '.github/**'
