@@ -24,7 +24,7 @@ jobs:
     steps:
     
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      #- uses: actions/checkout@v3
+      - uses: actions/checkout@v3
           
       #- run: node --version
       ##- run: npm --version
@@ -34,7 +34,7 @@ jobs:
       ##- run: node app.js
       
       - name: 'Checkout source code'
-        uses: 'actions/checkout@v3'
+        #uses: 'actions/checkout@v3'
         with:
           ref: ${{ github.ref }}
       - name: 'cat package.json'
@@ -47,8 +47,8 @@ jobs:
           major-wording: 'major'
           minor-wording: 'minor'
           patch-wording: 'patch'
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        #env:
+          #GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: 'cat package.json'
         run: cat ./package.json
       - name: 'Output Step'
