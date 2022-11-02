@@ -40,6 +40,7 @@ jobs:
 
   auto-bump:
     runs-on: ubuntu-latest
+    environment: development
     needs: [ check-merge ]
     steps:
       - uses: actions/checkout@v2
@@ -54,6 +55,7 @@ jobs:
         run: echo ".scripts/build_tag.sh"
   trigger-deploy:
     runs-on: ubuntu-latest
+    environment: development
     needs: [ check-merge, auto-bump ]
     steps:
       - name: Configure AWS Credentials
