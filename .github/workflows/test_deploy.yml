@@ -48,7 +48,7 @@ jobs:
           node-version: 'lts/fermium'
       - run: npm install
 
-      - run: cp src/config/env.example.js src/config/env.js
+      - run: echo "cp src/config/env.example.js src/config/env.js"
 
       - name: Auto-Bump & Tag
         run: echo ".scripts/build_tag.sh"
