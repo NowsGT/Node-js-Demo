@@ -76,11 +76,14 @@ jobs:
       # Set APT_VERSION
       - run: export APT_VERSION=`cat VERSION`
       - run: IFS="." read -r V_MAJOR V_MINOR V_PATCH <<< $APT_VERSION
+      - run: rm -f ./src/config/env.js 
       # start
       # install the RNAPP dependencies
       - name: echo Installing dependencies...
-        run: rm -f ./src/config/env.js      
-      - name: Setup env.js file
+        # Setup env.js file
         env:
           APT_ENV_JS: ${{ secrets.APT_ENV_JS }}
         run: echo "$APT_ENV_JS" >> ./src/config/env.js
+      - run: yarn install
+      # install rn cli for building bundles
+      - run: npm i -g react-native-cli
