@@ -87,3 +87,12 @@ jobs:
       - run: yarn install
       # install rn cli for building bundles
       - run: npm i -g react-native-cli
+      # build the RNAPP
+      - run: yarn run web:production
+      # build the rn-app BUNDLES
+      - run: npm i
+      - run: mkdir ~/bundle-output
+      - run: react-native bundle --entry-file ./index.ios.js --dev false --platform ios --bundle-output ~/bundle-output/main.ios.jsbundle
+      - run: react-native bundle --entry-file ./index.android.js --dev false --platform android --bundle-output ~/bundle-output/index.android.bundle
+
+
