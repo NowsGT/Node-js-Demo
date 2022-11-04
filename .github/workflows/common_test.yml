@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: build
-          path: build
+          path: build/
       - run: cd build/dist 
 
       - name: 'Checkout source code'
