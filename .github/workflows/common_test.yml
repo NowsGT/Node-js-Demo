@@ -39,7 +39,7 @@ jobs:
         with:
           name: build
           path: build/
-      - run: cd ~/build/dist 
+      - run: cd ./dist 
 
       - name: 'Checkout source code'
         uses: 'actions/checkout@v3'
