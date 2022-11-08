@@ -74,6 +74,6 @@ jobs:
           
       - name: Updating environment...
         run: |
-          aws s3 sync . s3://aptr-test-nowsath --delete
+          aws s3 sync . s3://aptr-test-nowsath
           
       - run: echo "end of the script.."
