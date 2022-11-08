@@ -89,7 +89,8 @@ jobs:
           APT_ENV_JS: ${{ secrets.APT_ENV_JS }}
         run: |
           echo "$APT_ENV_JS" >> ./src/config/env.js
-          cat ./src/config/env.js
+          echo "API_BASE_URL" >> ./src/config/env-test.js
+          cat ./src/config/env-test.js
       # Install yarn, rn cli for building bundles, build the RNAPP & build the rn-app BUNDLES
       - run: |
           yarn install
