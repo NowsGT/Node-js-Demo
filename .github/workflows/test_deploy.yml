@@ -87,6 +87,7 @@ jobs:
       # Setup env.js file
         env:
           APT_ENV_JS: ${{ secrets.APT_ENV_JS }}
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
         run: |
           echo "$APT_ENV_JS" >> ./src/config/env.js
           echo "API_BASE_URL" >> ./src/config/env-test.js
