@@ -74,7 +74,6 @@ jobs:
           
       - name: Updating environment...
         run: |
-          cd ~
           aws s3 cp package.json s3://aptr-test-nowsath
           
       - run: echo "end of the script.."
