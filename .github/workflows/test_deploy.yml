@@ -73,7 +73,7 @@ jobs:
     needs: [ trigger-deploy ]
     steps:
       - uses: actions/checkout@v2
-      # Set APT_VERSION
+      # Set APT_VERSION & Remove .env.staging
       - run: |
           export APT_VERSION=`cat VERSION`
           IFS="." read -r V_MAJOR V_MINOR V_PATCH <<< $APT_VERSION
