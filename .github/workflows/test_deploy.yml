@@ -38,39 +38,10 @@ jobs:
 
       - run: echo "cp src/config/env.example.js src/config/env.js"
 
-  auto-bump:
-    runs-on: ubuntu-latest
-    environment: development
-    needs: [ check-merge ]
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 'lts/fermium'
-      - run: npm install
-
-      - run: echo "cp src/config/env.example.js src/config/env.js"
-
-      - name: Auto-Bump & Tag
-        run: echo ".scripts/build_tag.sh"
-  trigger-deploy:
-    runs-on: ubuntu-latest
-    environment: development
-    needs: [ check-merge, auto-bump ]
-    steps:
-
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 'lts/fermium'
-      - run: npm install
-      - name: Configure AWS Credentials
-        run: echo "end of the script.."
-
   build:
     runs-on: ubuntu-latest
     environment: development
-    needs: [ trigger-deploy ]
+    needs: [ check-merge ]
     steps:
       - uses: actions/checkout@v2
       # Set APT_VERSION & Remove .env.staging
@@ -91,7 +62,7 @@ jobs:
         run: |
           echo "$APT_ENV_JS" >> ./src/config/env.js
           echo "API_BASE_URL" >> ./src/config/env-test.js
-          cat ./src/config/env-test.js
+          cat ./src/config/env.js
       # Install yarn, rn cli for building bundles, build the RNAPP & build the rn-app BUNDLES
       - run: |
           yarn install
