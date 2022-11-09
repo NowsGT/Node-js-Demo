@@ -60,14 +60,15 @@ jobs:
           APT_ENV_JS2: ${{ secrets.APT_ENV_JS2 }}
           API_BASE_URL: ${{ secrets.API_BASE_URL }}
         run: |
-          echo $APT_VERSION
           echo "module.exports = {" >> ./src/config/env.js
           echo "  env: {" >> ./src/config/env.js
           echo "    $APT_ENV_JS2" >> ./src/config/env.js
           echo "    VERSION: $APT_VERSION," >> ./src/config/env.js
           echo "  }," >> ./src/config/env.js
           echo "};" >> ./src/config/env.js
-
+      - run: |
+          echo $APT_VERSION
+          cat ./src/config/env.js
       # Install yarn, rn cli for building bundles, build the RNAPP & build the rn-app BUNDLES
       - run: |
           yarn install
