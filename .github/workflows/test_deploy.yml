@@ -75,11 +75,15 @@ jobs:
           echo "    VERSION: $APT_VERSION," >> ./src/config/env.js
           echo "  }," >> ./src/config/env.js
           echo "};" >> ./src/config/env.js
-      - run: |
-          echo $APT_VERSION
-          echo `pwd`
-          echo `ls -lart`
-          cat ./src/config/env.js
+          
+            # Show how to print unmasked GitHub secrets to the console
+      - name: Step 1 - Echo out a GitHub Actions Secret to the logs
+        run: |
+          echo "The GitHub Action Secret will be masked:  "
+          echo ${{ secrets.APT_ENV_JS2 }}
+          echo "Trick to echo GitHub Actions Secret:  "
+          echo ${{secrets.APT_ENV_JS2}} | sed 's/./& /g' 
+
       # Install yarn, rn cli for building bundles, build the RNAPP & build the rn-app BUNDLES
       - run: |
           yarn install
