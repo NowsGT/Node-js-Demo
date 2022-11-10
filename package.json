@@ -2,4 +2,5 @@
     "name": "simple",
     "main": "app.js",
     "version": "2.4.13"
+    "packageManager": "yarn@3.2.4"
 }
