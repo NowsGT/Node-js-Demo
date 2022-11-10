@@ -61,8 +61,11 @@ jobs:
           API_BASE_URL: ${{ secrets.API_BASE_URL }}
         run: |
           export APT_VERSION=`cat VERSION`
-          export IFS="." read -r V_MAJOR V_MINOR V_PATCH <<< $APT_VERSION
+          IFS="." read -r V_MAJOR V_MINOR V_PATCH <<< $APT_VERSION
           echo $APT_VERSION
+          export V_MAJOR
+          export V_MINOR
+          export V_PATCH
           echo $V_MAJOR - $V_MINOR - $V_PATCH
           echo "module.exports = {" >> ./src/config/env.js
           echo "  env: {" >> ./src/config/env.js
@@ -78,3 +81,22 @@ jobs:
           yarn install
           npm i -g react-native-cli
           mkdir ~/bundle-output
+          
+  post-build:
+    runs-on: ubuntu-latest
+    environment: development
+    needs: [ build ]
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-north-1
+
+      ## deploy RNAPP
+      - name: Updating environment...
+        run: |
+          export APT_VERSION=`cat VERSION`
+          IFS="." read -r V_MAJOR V_MINOR V_PATCH <<< $APT_VERSION
+          echo $APT_VERSION
