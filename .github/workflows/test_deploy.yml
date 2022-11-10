@@ -49,6 +49,7 @@ jobs:
           export APT_VERSION=`cat VERSION`
           IFS="." read -r V_MAJOR V_MINOR V_PATCH <<< $APT_VERSION
           echo $APT_VERSION
+          echo $V_MAJOR
 
       # Remove env.js
       - run: rm -f ./src/config/env.js  
