@@ -5,7 +5,7 @@ name: Pre-Release Deploy
 # Controls when the workflow will run
 on:
   release:
-    types: [ released ]
+    types: [ prereleased ]
     
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
