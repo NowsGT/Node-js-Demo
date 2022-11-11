@@ -87,6 +87,14 @@ jobs:
           echo `ls -lart`
           echo `pwd`
           
+      - name: Archive builds artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-without-markdown
+          path: |
+            dist
+            
+            
   post-build:
     runs-on: ubuntu-latest
     environment: development
