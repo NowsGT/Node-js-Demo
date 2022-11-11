@@ -84,6 +84,7 @@ jobs:
           yarn install
           npm i -g react-native-cli
           mkdir ~/bundle-output
+          echo `ls -lart`
           
   post-build:
     runs-on: ubuntu-latest
