@@ -85,6 +85,7 @@ jobs:
           npm i -g react-native-cli
           mkdir ~/bundle-output
           echo `ls -lart`
+          echo `pwd`
           
   post-build:
     runs-on: ubuntu-latest
