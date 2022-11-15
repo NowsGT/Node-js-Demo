@@ -20,7 +20,7 @@ jobs:
     #if: '!github.event.release.prerelease'
     
     runs-on: ubuntu-latest
-    environment: main
+    environment: staging
     #container: node:16
 
     # Steps represent a sequence of tasks that will be executed as part of the job
