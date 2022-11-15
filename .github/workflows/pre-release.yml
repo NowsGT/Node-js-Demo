@@ -15,7 +15,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build-node:
-    if: '!github.event.release.prerelease'
+    #if: '!github.event.release.prerelease'
     
     runs-on: ubuntu-latest
     environment: main
