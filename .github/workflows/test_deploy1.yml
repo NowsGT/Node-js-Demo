@@ -21,8 +21,5 @@ jobs:
         with:
           node-version: 'lts/fermium'
 
-      - name: Create test .env file
-        run: cp .env.example .env
-
       - name: Install node modules
         run: yarn install
