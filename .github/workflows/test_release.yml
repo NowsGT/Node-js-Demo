@@ -12,9 +12,13 @@ on:
 
 jobs:
   prerelease-staging:
-    uses: ./.github/workflows/test_deploy1.yml
-    with:
-     token: ${{ secrets.ACCESS_TOKEN }}
+    name: Run Workflow on staging
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run Test Deploy 1
+        run: github-actions run test_deploy1.yml
      
   release-production:
     if: 'github.event.release.prerelease'
