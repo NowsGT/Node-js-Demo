@@ -17,8 +17,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup environment
-        uses: actions/setup-github-actions@v1
+      - uses: actions/setup-github-actions@v1
       - name: Run Test Deploy 1
         run: github-actions run test_deploy1.yml
      
