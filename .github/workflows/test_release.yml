@@ -12,9 +12,10 @@ on:
 
 jobs:
   prerelease-staging:
-    uses: ./.github/workflows/test_deploy1.yml
-    secrets:
-     token: ${{ secrets.ACCESS_TOKEN }}
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+     - uses: ./.github/workflows/test_deploy1.yml
      
   release-production:
     if: 'github.event.release.prerelease'
