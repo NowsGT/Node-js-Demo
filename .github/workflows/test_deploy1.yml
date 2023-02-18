@@ -19,10 +19,6 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
 
-      - uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.RN_APP_KEY }}
-
       - uses: actions/setup-node@v2
         with:
           node-version: 'lts/fermium'
