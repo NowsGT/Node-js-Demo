@@ -12,24 +12,12 @@ on:
 
 jobs:
   prerelease-staging:
-    name: Run Workflow on staging
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Run Test Deploy 1
-        env:
-         token: ${{ secrets.ACCESS_TOKEN }}
-        uses: ./.github/workflows/test_deploy1.yml
+    uses: ./.github/workflows/test_deploy1.yml
+    with:
+     secrets: inherit
      
   release-production:
     if: 'github.event.release.prerelease'
-    name: Run Workflow on Prod
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Run Test Deploy 1
-        uses: ./.github/workflows/test_deploy2.yml
+    uses: ./.github/workflows/test_deploy2.yml
+    with:
+     secrets: inherit
