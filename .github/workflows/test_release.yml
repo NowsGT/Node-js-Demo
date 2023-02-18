@@ -17,10 +17,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - uses: actions/setup-github-actions@v2
+
       - name: Run Test Deploy 1
-        run: github-actions run test_deploy1.yml
+        uses: ./.github/workflows/test_deploy1.yml
      
   release-production:
     if: 'github.event.release.prerelease'
-    uses: ./.github/workflows/test_deploy2.yml
+    name: Run Workflow on Prod
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run Test Deploy 1
+        uses: ./.github/workflows/test_deploy2.yml
