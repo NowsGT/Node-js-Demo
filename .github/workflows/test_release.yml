@@ -33,7 +33,6 @@ on:
 
 jobs:
   prerelease-staging:
-    - name: Run Workflow on Staging
       uses: ./.github/workflows/test_deploy1.yml
       with:
         token: ${{ secrets.APT_DEPLOYMENT_ACCESS_TOKEN }}
