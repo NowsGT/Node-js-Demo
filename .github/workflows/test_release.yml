@@ -13,7 +13,9 @@ on:
 jobs:
   prerelease-staging:
     uses: ./.github/workflows/test_deploy1.yml
-
+    with:
+     token: ${{ secrets.ACCESS_TOKEN }}
+     
   release-production:
     if: 'github.event.release.prerelease'
     uses: ./.github/workflows/test_deploy2.yml
