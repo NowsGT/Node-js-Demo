@@ -12,12 +12,8 @@ on:
 
 jobs:
   prerelease-staging:
-    uses: ./.github/workflows/test_deploy1.yml
-    with:
-     secrets: inherit
+    uses: NowsGT/Node-js-Demo/.github/workflows/test_deploy1.yml@main
      
   release-production:
     if: 'github.event.release.prerelease'
     uses: ./.github/workflows/test_deploy2.yml
-    with:
-     secrets: inherit
