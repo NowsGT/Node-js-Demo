@@ -12,7 +12,7 @@ on:
 
 jobs:
   prerelease-staging:
-      uses: ./.github/workflows/test_deploy1.yml
+    uses: ./.github/workflows/test_deploy1.yml
 
   release-production:
     if: 'github.event.release.prerelease'
