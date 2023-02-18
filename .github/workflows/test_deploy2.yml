@@ -1,0 +1,30 @@
+name: Test Deploy 1
+
+# Controls when the workflow will run
+
+on: [ workflow_call, workflow_dispatch ]
+  # Allows you to run this workflow manually from the Actions tab
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  check-merge:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment: development
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/fermium'
+
+      - name: Create test .env file
+        run: cp .env.example .env
+
+      - name: Install node modules
+        run: yarn install
